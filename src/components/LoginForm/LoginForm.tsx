@@ -19,7 +19,8 @@ const error = useSelector((state: RootState) => state.auth.error);
 
   return (
     <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form  onSubmit={handleSubmit}>
+        <div className={styles.form}>
         <label className={styles.label} htmlFor="username">Email</label>
         <input
           className={styles.input}
@@ -38,6 +39,7 @@ const error = useSelector((state: RootState) => state.auth.error);
         />
         <button className={styles.button} type="submit">Sign in</button>
         {error&&<p className={styles.error}>{error}</p>}
+        </div>
       </form>
 
     </div>

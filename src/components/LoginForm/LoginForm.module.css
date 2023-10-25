@@ -5,6 +5,7 @@
     align-items: center;
     height: 100vh;
 
+
 }
 
 .form {
@@ -13,13 +14,16 @@
     background-color: #1a1a1a;
     padding: 20px;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .label,
 .input,
 .button {
     display: block;
-    width: 100%;
+
     margin-bottom: 15px;
 }
 
@@ -51,7 +55,7 @@
     background-color: #ff4d4d;
 }
 
-.error{
+.error {
     color: red;
     font-size: 14px;
     margin-bottom: 10px;
