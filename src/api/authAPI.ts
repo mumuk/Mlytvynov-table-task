@@ -1,10 +1,12 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import {createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
+import {AxiosError} from 'axios';
 
 interface LoginPayload {
   username: string;
   password: string;
 }
+
 
 export const login = createAsyncThunk('auth/login', async (payload: LoginPayload, thunkAPI) => {
   try {
@@ -16,8 +18,8 @@ export const login = createAsyncThunk('auth/login', async (payload: LoginPayload
 
     return response.data;
   } catch (error) {
-
-    return thunkAPI.rejectWithValue(error.response.data);
+    const axiosError = error as AxiosError;
+    return thunkAPI.rejectWithValue(axiosError.response?.data);
   }
 });
 

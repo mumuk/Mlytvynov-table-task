@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "./store";
+import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "./store"; // предположим, что вы импортируете тип состояния из store.ts
 import { authAPI } from "../api/authAPI.ts";
 
 interface AuthState {
@@ -14,7 +14,10 @@ const initialState: AuthState = {
   error: null,
 };
 
+interface MyPayloadType {
+  error?: string;
 
+}
 
 const authSlice = createSlice({
   name: "auth",
@@ -35,8 +38,8 @@ const authSlice = createSlice({
         }
       })
       .addCase(authAPI.login.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload.error || "An error occurred during authentication.";
+        const payload = action.payload as MyPayloadType;
+        state.error = payload.error || "An error occurred during authentication.";
       });
   },
 });

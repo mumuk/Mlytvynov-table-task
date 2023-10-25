@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import styles from './LoginForm.module.css';
 import {useDispatch, useSelector} from 'react-redux';
+import { AppDispatch } from '../../redux/store.tsx';
 import {authAPI} from "../../api/authAPI.ts";
 import {RootState} from "../../redux/store.tsx";
 
 
 const LoginForm: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 const error = useSelector((state: RootState) => state.auth.error);

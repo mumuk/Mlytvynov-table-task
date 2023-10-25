@@ -1,12 +1,22 @@
-import styles from "./Table.module.css";
-import React from "react";
 
-export const columns = (onEditClick,onDeleteClick) => [
+import styles from "./Table.module.css";
+import { CellProps, CellValue, Row } from "react-table";
+import { IPerson } from "../../interfaces/IPerson.ts";
+
+interface ColumnCellProps {
+  cell: CellProps<IPerson, CellValue>;
+  row: Row<IPerson>;
+}
+
+
+export const columns = (
+  onEditClick: (field: string, value: any, personId: number) => void,
+  onDeleteClick: (personId: number) => void
+) => [
   {
     Header: 'Name',
     accessor: 'name' as const,
-
-    Cell: ({ cell, row }: any) => (
+    Cell: ({cell, row}: ColumnCellProps) => (
       <div>
         {cell.value}
         <button onClick={() => onEditClick(cell.column.id, cell.value, row.original.id)}>🖊️</button>
@@ -17,7 +27,7 @@ export const columns = (onEditClick,onDeleteClick) => [
   {
     Header: 'Email',
     accessor: 'email' as const,
-    Cell: ({ cell, row  }: any) => (
+    Cell: ({cell, row}: ColumnCellProps) => (
       <div>
         {cell.value}
         <button onClick={() => onEditClick(cell.column.id, cell.value, row.original.id)}>🖊️</button>
@@ -28,11 +38,12 @@ export const columns = (onEditClick,onDeleteClick) => [
   {
     Header: 'Birthday',
     accessor: 'birthday_date' as const,
-
-    Cell: ({cell, row  }: any) => (
+    Cell: ({cell, row}: ColumnCellProps) => (
       <div>
         {cell.value}
-        <button className={styles.editButton} onClick={() => onEditClick(cell.column.id, cell.value, row.original.id)}>🖊️</button>
+        <button className={styles.editButton}
+                onClick={() => onEditClick(cell.column.id, cell.value, row.original.id)}>🖊️
+        </button>
       </div>
     ),
     className: styles.birthdayColumn,
@@ -40,7 +51,7 @@ export const columns = (onEditClick,onDeleteClick) => [
   {
     Header: 'Phone Number',
     accessor: 'phone_number' as const,
-    Cell: ({ cell, row }: any) => (
+    Cell: ({cell, row}: ColumnCellProps) => (
       <div>
         {cell.value}
         <button onClick={() => onEditClick(cell.column.id, cell.value, row.original.id)}>🖊️</button>
@@ -51,7 +62,7 @@ export const columns = (onEditClick,onDeleteClick) => [
   {
     Header: 'Address',
     accessor: 'address' as const,
-    Cell: ({ cell, row }: any) => (
+    Cell: ({cell, row}: ColumnCellProps) => (
       <div>
         {cell.value}
         <button onClick={() => onEditClick(cell.column.id, cell.value, row.original.id)}>🖊️</button>
@@ -61,8 +72,8 @@ export const columns = (onEditClick,onDeleteClick) => [
   },
   {
     Header: 'Actions',
-    accessor: 'actions' as const,
-    Cell: ({ row }: any) => (
+
+    Cell: ({row}: ColumnCellProps) => (
       <div>
         <button onClick={() => onDeleteClick(row.original.id)} className={styles.deleteButton}>✖️️</button>
       </div>

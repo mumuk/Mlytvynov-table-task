@@ -7,3 +7,4 @@ export interface IPerson {
   address?: string;
   birthday_date: string;
 }
+
