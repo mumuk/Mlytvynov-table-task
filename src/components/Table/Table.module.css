@@ -1,0 +1,43 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.header, .cell {
+    border: 1px solid red;
+    padding: 10px;
+    text-align: center;
+    width: 20%;
+    background-color: black;
+    color: white;
+}
+
+.cell div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+
+}
+
+.edit-button {
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+button:hover {
+    background-color: lightgrey;
+}
+
+.actionColumn{
+ text-align: center;
+}
+
+.deleteButton{
+    margin:auto;
+}
