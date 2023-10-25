@@ -1,0 +1,31 @@
+.root {
+    margin: auto;
+    width: 1280px;
+    background-color: #333333;
+    color: #fff;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif
+}
+
+.h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.p {
+    margin: 10px;
+    line-height: 25px;
+}
+
+.h2 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+h1,h2{
+    color: red;
+    text-shadow: 1px 0 1px white,
+    0 1px 1px white,
+    -1px 0 1px white,
+    0 -1px 1px white;
+}

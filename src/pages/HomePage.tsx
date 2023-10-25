@@ -6,6 +6,7 @@ import {AppDispatch} from "../redux/store.tsx";
 import Table from "../components/Table/Table.tsx";
 import EditFieldModal from "../components/EditFieldModal/EditFieldModal.tsx";
 import {IPerson} from "../interfaces/IPerson.ts";
+import Description from "../components/Description";
 
 
 function convertDate(dateString: string) {
@@ -72,6 +73,7 @@ function HomePage() {
         onEditClick={onHandleEdit}
         onDeleteClick={onHandleDelete}
       /> : <div>Loading...</div>}
+      <Description/>
     </>
   );
 }
